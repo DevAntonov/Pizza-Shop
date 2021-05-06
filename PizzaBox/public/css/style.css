@@ -1,1 +1,222 @@
+html{
+    scroll-behavior: smooth;
+    max-width: 100%;
+    overflow-x: hidden;
+}
 
+body{
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    background-color: #f1f1f1;
+    /*font-family: Tahoma, Geneva, sans-serif;*/
+    font-family: 'Roboto', sans-serif;
+}
+
+#header{
+    width: 100%;
+    height: 70px;
+    position: fixed;
+    z-index: 1000;
+    background-color: transparent;
+    transition: 0.6s;
+}
+
+#header.active{
+    width: 100%;
+    position: fixed;
+    z-index: 1000;
+    transition: 0.6s;
+    background-color: rgba(0,0,0,1);
+}
+
+.style_h1{
+    color: #dd8e15;
+    padding-left: 30px;
+    font-size: 28px;
+    font-family: 'Courgette', cursive;
+    font-weight: lighter;
+}
+
+.navigation_bar{
+    width: 100%;
+    height: 50px;
+    position: absolute;
+    top: 8px;
+    right: 20px;
+}
+
+.nav_links{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    float: right;
+}
+
+.navigation_bar li{
+    display: inline;
+}
+
+.navigation_bar a{
+    float: left;
+	color:#fff;
+	text-align: center;
+	text-decoration: none;
+	padding: 16px 22px;
+	font-size: 16px;
+	font-weight: bold;
+}
+
+.navigation_bar a:hover{
+    color:#dd8e15;
+	border-bottom: 1px solid #dd8e15;
+	
+}
+
+.crop_img{
+	max-height:710px;
+	overflow: hidden;
+}
+
+#home_img{
+    width:100%;
+    height:auto;
+    filter:brightness(90%);
+}
+
+#text_box{
+	display:block;
+	position:absolute;
+	width:65%;
+    height:48%;
+	color:white;
+	top: 50%;
+  	left: 50%;
+  	transform: translate(-50%, -50%);
+  	text-align:center;
+  	background-color: black;
+  	opacity:0.8;
+}
+
+#logo_img{
+    margin-top:25px;
+    margin-bottom: 15px;
+    width: 20%;
+}
+
+.a_link{
+    display: block;
+    text-decoration: none;
+    text-align: center;
+    color:#fff;
+    font-size:20px;
+    font-weight: bold;
+    width:20%;
+    height:40px;
+    padding-top:15px;
+    margin-left:auto;
+    margin-right:auto;
+    border: 3px solid #dd8e15;
+}
+
+.a_link:hover{
+    background-color:#dd8e15;
+    transition:0.3s;   
+}
+
+
+.separator_box{
+	position:relative;
+	width:100%;
+	height:150px;
+    background: repeating-linear-gradient(
+    -55deg,
+    #dd8e15,
+    #dd8e15 10px,
+    rgb(170, 104, 5) 10px,
+    rgb(170, 104, 5) 20px
+    );
+}
+
+.separator_box2{
+	position:relative;
+	width:100%;
+	height:150px;
+    background: repeating-linear-gradient(
+    55deg,
+    #dd8e15,
+    #dd8e15 10px,
+    rgb(170, 104, 5) 10px,
+    rgb(170, 104, 5) 20px
+    );
+}
+
+#about{
+    position: relative;
+    display: block;
+    height:560px;
+    overflow: hidden;
+}
+
+#abt_box{
+    position:absolute;
+	max-width:35%;
+	min-height:100%;
+	z-index:2;
+	font-size:1.6vw;
+	padding-top:60px;
+	padding-left:30px;
+	padding-right:30px;
+	background-color:#000;
+	color:white;
+	opacity:0.8;
+	overflow: hidden;
+}
+
+.parallax_effect{
+	background: url('/PizzaBox/public/images/cook.jpg') no-repeat center;
+  	min-height: 560px;
+  	background-attachment: fixed;
+	background-size: cover;
+}
+
+
+.social_img_box{
+    padding-top: 10px;
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+    justify-content: space-around;
+    justify-content: space-evenly;
+    background-color: #f1f1f1;
+    height:60px;
+}
+
+.social_img_box img:hover{
+	background-color: #dd8e15;
+}
+.social_img_style{
+    display: block;
+    width:50px;
+    height: auto;
+    margin-left: 20px;
+	background-color: #f1f1f1;
+	transition:0.3s;
+	border-radius: 50%;
+}
+
+
+#logo_box{
+    background-color: #000;
+    height:180px;
+}
+
+#ftr_img_style{
+    position:relative;
+	display:block;
+    width:140px;
+    height:auto;
+    top:20px;
+    margin-left: auto;
+  	margin-right: auto;
+}

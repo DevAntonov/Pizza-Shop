@@ -1,5 +1,5 @@
 <header id="header">
-    <h1 class="style_h1">PIZZABOX</h1>
+    <h1 class="style_h1">PizzaBox</h1>
     <nav class="navigation_bar">
         <ul class="nav_links">
             <li>
