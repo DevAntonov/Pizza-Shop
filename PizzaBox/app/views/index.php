@@ -25,6 +25,7 @@
 <div class="separator_box"></div>
 
 <section id="hot">
+	<h2 class="style_hot_h2">Popular orders</h2>
 <div class="pizza_flexbox">
     <div class="flex_container">
         <img class="pizza_img" src="/PizzaBox/public/images/hot/pepperonihot.jpg">
