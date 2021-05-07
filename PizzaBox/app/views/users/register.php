@@ -1,3 +1,9 @@
+<?php 
+	if(isLoggedIn()){
+		header('location: '. URLROOT . '/users/account');
+	}
+?>
+
 <!DOCTYPE html>
 <html lang="en-US">
 	<head>

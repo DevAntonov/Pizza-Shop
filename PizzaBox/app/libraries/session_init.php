@@ -4,7 +4,7 @@ session_start();
 
 function isLoggedIn()
 {
-    if(isset($_SESSION['user_id'])){
+    if(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true){
         return true;
     }else{
         return false;

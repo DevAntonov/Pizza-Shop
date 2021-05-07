@@ -6,6 +6,12 @@
                 <a href="<?php echo URLROOT ?>/index">Home</a>
             </li>
             <li>
+                <a href="<?php echo URLROOT ?>#hot">Hot</a>
+            </li>
+            <li>
+                <a href="<?php echo URLROOT ?>#about">About</a>
+            </li>
+            <li>
                 <a href="<?php echo URLROOT; ?>/users/register">Register</a>
             </li>
             <li>
