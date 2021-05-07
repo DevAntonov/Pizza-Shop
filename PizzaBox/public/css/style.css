@@ -170,6 +170,14 @@ body{
     
 }
 
+.style_hot_h2{
+    font-family: 'Courgette', cursive;
+    text-align: center;
+    color:#dd8e15;
+    font-size: 40px;
+    margin-bottom: 0px;
+}
+
 .pizza_flexbox{
     display:flex;
     flex-direction: row;
