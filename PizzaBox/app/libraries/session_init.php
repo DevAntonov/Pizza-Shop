@@ -10,3 +10,12 @@ function isLoggedIn()
         return false;
     }
 }
+
+function isLoggedInAdmin()
+{
+    if(isset($_SESSION['loggedinAdmin']) && $_SESSION['loggedinAdmin'] === true){
+        return true;
+    }else{
+        return false;
+    }
+}

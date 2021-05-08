@@ -1,5 +1,5 @@
 //Change bg-color on scroll
-const header=document.getElementById('header');
+/*const header=document.getElementById('header');
 window.onscroll=function(){
 	let top = window.scrollY;
 	if(top>=50){
@@ -7,4 +7,4 @@ window.onscroll=function(){
 	}else{
 		header.classList.remove('active');
 	}
-}
+}*/

@@ -18,33 +18,33 @@
     </div>
     <div id="text_box">
         <img id="logo_img" src ="/PizzaBox/public/images/pizzaboxlogotr.png">
-        <a href="<?php echo URLROOT; ?>/users/login" class="a_link">Order Now</a>
+        <a href="<?php echo URLROOT; ?>/customers/login" class="a_link">Order Now</a>
     </div>
 </section>
 
 <div class="separator_box"></div>
 
 <section id="hot">
-	<h2 class="style_hot_h2">Popular orders</h2>
+<h2 class="style_hot_h2">Popular orders</h2>
 <div class="pizza_flexbox">
     <div class="flex_container">
         <img class="pizza_img" src="/PizzaBox/public/images/hot/pepperonihot.jpg">
         <h2>Pizza I</h2>
         <p>Pizza Description: <br> Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-        <a href="<?php echo URLROOT; ?>/users/login" class="a_link_box">Order Now</a>
+        <a href="<?php echo URLROOT; ?>/customers/login" class="a_link_box">Order Now</a>
     </div>
     <div class="flex_container">
         <img class="pizza_img" src="/PizzaBox/public/images/hot/another.jpg">
         <h2>Pizza II</h2>
         <p>Pizza Description: <br> Lorem ipsum dolor sit amet, consectetur adipiscing elit.
         Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-        <a href="<?php echo URLROOT; ?>/users/login" class="a_link_box">Order Now</a>
+        <a href="<?php echo URLROOT; ?>/customers/login" class="a_link_box">Order Now</a>
     </div>
     <div class="flex_container">
         <img class="pizza_img" src="/PizzaBox/public/images/hot/olive.jpg">
         <h2>Pizza III</h2>
         <p>Pizza Description: <br> Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-        <a href="<?php echo URLROOT; ?>/users/login" class="a_link_box">Order Now</a>
+        <a href="<?php echo URLROOT; ?>/customers/login" class="a_link_box">Order Now</a>
     </div>
 </div>
 </section>
