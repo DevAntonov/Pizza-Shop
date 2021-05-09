@@ -76,6 +76,10 @@ body{
     transition-duration: 0.4s;
 }
 
+#btn_acc_info{
+    background-color: #da9938;
+}
+
 .btn:hover{
     background-color: #da9938;
 }
