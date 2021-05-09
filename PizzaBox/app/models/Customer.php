@@ -11,7 +11,7 @@ class Customer
 
     public function takenEmailValidation($email)
     {
-        $this->db->query('SELECT * FROM customers WHERE email= :email');
+        $this->db->query('SELECT * FROM customer WHERE email= :email');
         $this->db->bind(':email', $email);
         /*$this->db->execute();*/
         if($this->db->rowCount() > 0){
@@ -24,8 +24,8 @@ class Customer
     public function registerCustomer($data)
     {
         
-        $this->db->query('INSERT INTO customers (name, email, password) VALUES(:name, :email, :password)');
-        $this->db->bind(':name', $data['name']);
+        $this->db->query('INSERT INTO customer (first_name, email, password) VALUES(:first_name, :email, :password)');
+        $this->db->bind(':first_name', $data['name']);
         $this->db->bind(':email', $data['email']);
         $this->db->bind(':password', $data['pwd']);
 
@@ -38,7 +38,7 @@ class Customer
 
     public function loginCustomer($email, $pwd)
     {
-        $this->db->query('SELECT * FROM customers WHERE email = :email');
+        $this->db->query('SELECT * FROM customer WHERE email = :email');
         $this->db->bind(':email', $email);
         $row = $this->db->resultRow();
         
