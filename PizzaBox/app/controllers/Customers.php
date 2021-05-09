@@ -57,7 +57,7 @@ class Customers extends Controller
             }elseif(!filter_var($data['email'], FILTER_VALIDATE_EMAIL)){
                 $data['email_err'] = "Incorrect email format!";
             }else{
-                if($this->userModel->takenEmailValidation($data['email'])){
+                if($this->customerModel->takenEmailValidation($data['email'])){
                     $data['email_err'] = "Email is taken!";
                 }
             }
@@ -83,7 +83,7 @@ class Customers extends Controller
             //Empty Error Messages check
             if(empty($data['email_err']) && empty($data['name_err']) && empty($data['pwd_err']) && empty($data['pwdr_err'])){
                 $data['pwd'] = password_hash($data['pwd'], PASSWORD_DEFAULT);
-                if($this->userModel->registerCustomer($data)){
+                if($this->customerModel->registerCustomer($data)){
                     $data['success_msg'] = "You have successfully registered!";
                 }else{
                     die('Something went wrong!');
@@ -149,12 +149,12 @@ class Customers extends Controller
         $this->view('customers/login', $data);
     }
 
-    public function createSession($user)
+    public function createSession($customer)
     {
         session_start();
         $_SESSION['loggedin'] = true;
-        $_SESSION['customer_id'] = $user->user_id;
-        $_SESSION['customer_name'] = $user->name;
+        $_SESSION['customer_id'] = $customer->customer_id;
+        $_SESSION['customer_name'] = $customer->first_name;
     }
 
     public function logout()
