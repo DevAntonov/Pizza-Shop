@@ -9,8 +9,8 @@ let btnAdr = document.getElementById('btn_address');
 
 function displayDetailsForm(){
     btnAcc.style.backgroundColor="#da9938";
-    btnPwd.style.backgroundColor="transparent";
-    btnAdr.style.backgroundColor="transparent";
+    btnPwd.style.backgroundColor="";
+    btnAdr.style.backgroundColor="";
     accForm.style.display="block";
     adrForm.style.display="none";
     pwdForm.style.display="none";
@@ -18,8 +18,8 @@ function displayDetailsForm(){
 
 function displayPasswordForm(){
     btnPwd.style.backgroundColor="#da9938";
-    btnAcc.style.backgroundColor="transparent";
-    btnAdr.style.backgroundColor="transparent";
+    btnAcc.style.backgroundColor="";
+    btnAdr.style.backgroundColor="";
     accForm.style.display="none";
     adrForm.style.display="none";
     pwdForm.style.display="block";
@@ -28,10 +28,9 @@ function displayPasswordForm(){
 
 function displayAddressForm(){
     btnAdr.style.backgroundColor="#da9938";
-    btnAcc.style.backgroundColor="transparent";
-    btnPwd.style.backgroundColor="transparent";
+    btnAcc.style.backgroundColor="";
+    btnPwd.style.backgroundColor="";
     accForm.style.display="none";
     pwdForm.style.display="none";
     adrForm.style.display="block";
 }
-
