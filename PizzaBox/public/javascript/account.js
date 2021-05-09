@@ -7,14 +7,10 @@ let btnAcc = document.getElementById('btn_acc_info');
 let btnPwd = document.getElementById('btn_pass');
 let btnAdr = document.getElementById('btn_address');
 
-let btnAccDef = document.getElementById('btn_acc_info');
-
-
-
 function displayDetailsForm(){
     btnAcc.style.backgroundColor="#da9938";
-    btnPwd.style.backgroundColor="";
-    btnAdr.style.backgroundColor="";
+    btnPwd.style.backgroundColor="transparent";
+    btnAdr.style.backgroundColor="transparent";
     accForm.style.display="block";
     adrForm.style.display="none";
     pwdForm.style.display="none";
@@ -22,9 +18,8 @@ function displayDetailsForm(){
 
 function displayPasswordForm(){
     btnPwd.style.backgroundColor="#da9938";
-    btnAcc.style.backgroundColor="";
-    btnAccDef.style.backgroundColor="transparent";
-    btnAdr.style.backgroundColor="";
+    btnAcc.style.backgroundColor="transparent";
+    btnAdr.style.backgroundColor="transparent";
     accForm.style.display="none";
     adrForm.style.display="none";
     pwdForm.style.display="block";
@@ -33,9 +28,8 @@ function displayPasswordForm(){
 
 function displayAddressForm(){
     btnAdr.style.backgroundColor="#da9938";
-    btnAcc.style.backgroundColor="";
-    btnAccDef.style.backgroundColor="transparent";
-    btnPwd.style.backgroundColor="";
+    btnAcc.style.backgroundColor="transparent";
+    btnPwd.style.backgroundColor="transparent";
     accForm.style.display="none";
     pwdForm.style.display="none";
     adrForm.style.display="block";
