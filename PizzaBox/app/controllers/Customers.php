@@ -149,7 +149,7 @@ class Customers extends Controller
         $this->view('customers/login', $data);
     }
 
-    public function account() {
+    public function details() {
 
         $data = [
             'first_name' => '',
@@ -220,18 +220,6 @@ class Customers extends Controller
                     die('Something went wrong!');
                 }
             }
-        }else{
-            $data = [
-                'first_name' => '',
-                'last_name' => '',
-                'email' => '',
-                'phone' => '',
-                'first_name_err' => '',
-                'last_name_err' => '',
-                'email_err' => '',
-                'phone_err' => '',
-                'success_msg' => ''
-            ];
         }
 
         $this->view('customers/account', $data);
@@ -253,8 +241,8 @@ class Customers extends Controller
         header('location: '. URLROOT . '/index');
     }
 
-    //public function account()
-    //{
-    //    $this->view('customers/account');
-    //}
+    public function account()
+    {
+        $this->view('customers/account');
+    }
 }
