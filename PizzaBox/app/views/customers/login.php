@@ -26,7 +26,7 @@
 						<input type="password" name="pwd" class="input_field" placeholder="Password" required>
 						<button type="submit" name="submit_log" class="btn_submit">Log In</button>
 					</form>
-					<p class="p_style">Don't have an account? Register <a href="<?php echo URLROOT ?>/customers/register">here</a></p>
+					<p class="p_style">Don't have an account? Register <a href="<?php echo URLROOT; ?>/customers/register">here</a></p>
 				</div>
 			</section>
 

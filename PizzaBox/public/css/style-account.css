@@ -76,13 +76,15 @@ body{
     transition-duration: 0.4s;
 }
 
+
+
 .btn:hover{
     background-color: #da9938;
 }
 
 #acc_details{
-    display:none;
-    margin-top:100px;
+    display:block;
+    /*margin-top:100px;*/
     width: 450px;
     margin-left:auto;
     margin-right: auto;   
@@ -117,9 +119,9 @@ body{
 }
 
 #acc_pass{
-    /*display:none;*/
-    display:block;
-    margin-top:100px;
+    display:none;
+    
+    /*margin-top:100px;*/
     width: 450px;
     margin-left:auto;
     margin-right: auto;   

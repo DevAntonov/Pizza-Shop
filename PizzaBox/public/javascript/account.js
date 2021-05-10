@@ -34,3 +34,4 @@ function displayAddressForm(){
     pwdForm.style.display="none";
     adrForm.style.display="block";
 }
+

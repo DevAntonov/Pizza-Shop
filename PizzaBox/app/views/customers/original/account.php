@@ -13,7 +13,6 @@
     <link rel="stylesheet" href="/PizzaBox/public/css/style.css">
 	<link rel="stylesheet" href="/PizzaBox/public/css/style-header.css">
 	<link rel="stylesheet" href="/PizzaBox/public/css/style-account.css">
-	<link rel="stylesheet" href="/PizzaBox/public/css/style-errors.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
@@ -41,15 +40,8 @@
 		</div>
 		<div class="wrap_acc">
 			<div id="acc_details">
-			<div class="msg">
-					<p class ="success"><?php if(isset($data['success_msg'])){echo $data['success_msg']; } ?></p>
-					<p><?php  if(isset($data['email_err'])){echo $data['email_err']; } ?></p>
-					<p><?php if(isset($data['first_name_err'])){echo $data['first_name_err']; }?></p>
-					<p><?php if(isset($data['last_name_err'])){echo $data['last_name_err']; } ?></p>
-					<p><?php if(isset($data['phone_err'])){echo $data['phone_err']; } ?></p>
-				</div>
 				<h2 class="acc_h2_style">Account Details</h1>
-				<form action="<?php echo URLROOT;?>/customers/details" method="post" class="form_style">
+				<form action="<?php echo URLROOT ;?>/customers/account" method="post" class="form_style">
 					<label class="acc_lbl">First name: 
 					<input type="text" name="first_name" class="input_field_acc" placeholder="First Name">
 					</label>
@@ -62,18 +54,13 @@
 					<label class="acc_lbl">Phone number: 
 					<input type="tel" name="phone" class="input_field_acc" placeholder="Phone" required>
 					</label>
-					<button type="submit" name="submit_update" class="btn_update">Update</button>	
+					<button type="submit" name="submit_update" class="btn_update">Update</button>
+					
 				</form>
 			</div>
 			<div id="acc_pass">
-			<div class="msg">
-					<p class="success"><?php if(isset($data['success_msg_pwd'])){echo $data['success_msg_pwd']; } ?></p>
-					<p><?php  if(isset($data['pwd_err'])){echo $data['pwd_err']; } ?></p>
-					<p><?php if(isset($data['new_pwd_err'])){echo $data['new_pwd_err']; }?></p>
-					<p><?php if(isset($data['new_pwdr_err'])){echo $data['new_pwdr_err']; } ?></p>
-				</div>
 				<h2 class="acc_h2_style">Password</h2>
-					<form action="<?php echo URLROOT;?>/customers/password" method="post" class="form_style">
+					<form action="<?php echo URLROOT ;?>/customers/account" method="post" class="form_style">
 					<label class="acc_lbl">Current Password: 
 					<input type="password" password="current_pwd" class="input_field_acc" placeholder="Current Password" required>
 					</label>
@@ -88,7 +75,7 @@
 			</div>
 			<div id="acc_address">
 				<h2 class="acc_h2_style">Address</h2>
-					<form action="<?php echo URLROOT;?>/customers/address" method="post" class="form_style">
+					<form action="<?php echo URLROOT ;?>/customers/account" method="post" class="form_style">
 					<label class="acc_lbl">City*: 
 					<input type="text" text="city" class="input_field_acc" placeholder="City" required>
 					</label>
