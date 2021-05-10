@@ -149,6 +149,94 @@ class Customers extends Controller
         $this->view('customers/login', $data);
     }
 
+    public function account() {
+
+        $data = [
+            'first_name' => '',
+            'last_name' => '',
+            'email' => '',
+            'phone' => '',
+            'first_name_err' => '',
+            'last_name_err' => '',
+            'email_err' => '',
+            'phone_err' => '',
+            'success_msg' => ''
+        ];
+
+        if($_SERVER['REQUEST_METHOD'] == 'POST')
+        {
+
+            $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+
+            $data = [
+                'first_name' => trim($_POST['first_name']),
+                'last_name' => trim($_POST['last_name']),
+                'email' => trim($_POST['email']),
+                'phone' => trim($_POST['phone']),
+                'first_name_err' => '',
+                'last_name_err' => '',
+                'email_err' => '',
+                'phone_err' => '',
+                'success_msg' => ''
+            ];
+            
+            //Validation RegEx
+            $nameValidation = "/^[a-zA-Z]*$/";
+            $phoneValidation = "/^\\d{10}$/";
+
+            //First name validation
+            if(empty($data['first_name'])){
+                $data['first_name_err'] = "Please enter your first name!";
+            }elseif(!preg_match($nameValidation, $data['first_name'])){
+                $data['first_name_err'] = "First name can only contain letters!";
+            }
+
+            //Last name validation
+            if(empty($data['last_name'])){
+                $data['last_name_err'] = "Please enter your last name!";
+            }elseif(!preg_match($nameValidation, $data['last_name'])){
+                $data['last_name_err'] = "Last name can only contain letters!";
+            }
+
+            //Email Validation
+            if(empty($data['email'])){
+                $data['email_err'] = "Please enter your email!";
+            }elseif(!filter_var($data['email'], FILTER_VALIDATE_EMAIL)){
+                $data['email_err'] = "Incorrect email format!";
+            }
+            
+            //phone validation
+            if(empty($data['phone'])){
+                $data['phone_err'] = "Please enter your phone number!";
+            }elseif(!preg_match($phoneValidation, $data['phone'])){
+                $data['phone_err'] = "Phone number can only contain 10 digits!";
+            }
+
+            //Empty Error Messages check
+            if(empty($data['email_err']) && empty($data['first_name_err']) && empty($data['last_name_err']) && empty($data['phone_err'])){
+                if($this->customerModel->changeAccountDetails($data)){
+                    $data['success_msg'] = "You have successfully changed your details!";
+                }else{
+                    die('Something went wrong!');
+                }
+            }
+        }else{
+            $data = [
+                'first_name' => '',
+                'last_name' => '',
+                'email' => '',
+                'phone' => '',
+                'first_name_err' => '',
+                'last_name_err' => '',
+                'email_err' => '',
+                'phone_err' => '',
+                'success_msg' => ''
+            ];
+        }
+
+        $this->view('customers/account', $data);
+    }
+
     public function createSession($customer)
     {
         session_start();
@@ -165,8 +253,8 @@ class Customers extends Controller
         header('location: '. URLROOT . '/index');
     }
 
-    public function account()
-    {
-        $this->view('customers/account');
-    }
+    //public function account()
+    //{
+    //    $this->view('customers/account');
+    //}
 }

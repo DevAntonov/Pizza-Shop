@@ -41,6 +41,13 @@
 		<div class="wrap_acc">
 			<div id="acc_details">
 				<h2 class="acc_h2_style">Account Details</h1>
+				<div class="msg">
+					<p class = 'success'><?php echo $data['success_msg']; ?></p>
+					<p><?php echo $data['email_err']; ?></p>
+					<p><?php echo $data['first_name_err']; ?></p>
+					<p><?php echo $data['last_name_err']; ?></p>
+					<p><?php echo $data['phone_err']; ?></p>
+				</div>
 				<form action="<?php echo URLROOT ;?>/customers/account" method="post" class="form_style">
 					<label class="acc_lbl">First name: 
 					<input type="text" name="first_name" class="input_field_acc" placeholder="First Name">
