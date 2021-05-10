@@ -55,9 +55,27 @@ class Customer
         }
     }
 
-    public function changeAccountDetails($data) {
+    public function checkPassword($pwd, $customerID)
+    {
+        $this->db->query('SELECT * FROM customer WHERE id = :id');
+        $this->db->bind(':id', $customerID);
+        $row = $this->db->resultRow();
 
-        $customerID = $_SESSION['customer_id'];
+        if(!empty($row)){
+            $hashedPassword = $row->password;
+        }else{
+            return false;
+        }
+
+        if(!password_verify($pwd, $hashedPassword)){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    public function changeAccountDetails($data, $customerID) 
+    {
 
         $this->db->query(
         'UPDATE customer
@@ -65,14 +83,59 @@ class Customer
         last_name = :last_name,
         email = :email,
         phone_number = :phone_number
-        WHERE id = 1'
+        WHERE id = :id'
         );
 
         $this->db->bind(':first_name', $data['first_name']);
         $this->db->bind(':last_name', $data['last_name']);
         $this->db->bind(':email', $data['email']);
         $this->db->bind(':phone_number', $data['phone']);
-        //$this->db->bind(':id', $customerID);
+        $this->db->bind(':id', $customerID);
+
+        if($this->db->execute()){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    public function getAccountDetails($customerID)
+    {
+        $this->db->query('SELECT first_name FROM customer WHERE id = :id');
+        $this->db->bind(':id', $customerID);
+
+        $row = $this->db->resultRow();
+        return $row;
+    }
+
+    public function changePassword($newPassword, $customerID) 
+    {
+        $this->db->query(
+            'UPDATE customer
+            SET password = :password
+            WHERE id = :id'
+        );
+
+        $this->db->bind(':password', $newPassword);
+        $this->db->bind(':id', $customerID);
+
+        if($this->db->execute()){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    public function changeAddressDetails($address, $customerID) 
+    {
+        $this->db->query(
+            'UPDATE customer
+            SET address = :address
+            WHERE id = :id'
+        ); 
+
+        $this->db->bind(':address', $address);
+        $this->db->bind(':id', $customerID);
 
         if($this->db->execute()){
             return true;

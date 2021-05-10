@@ -41,9 +41,9 @@
 		</div>
 		<div class="wrap_acc">
 			<div id="acc_details">
-			<div class="msg">
+				<div class="msg">
 					<p class ="success"><?php if(isset($data['success_msg'])){echo $data['success_msg']; } ?></p>
-					<p><?php  if(isset($data['email_err'])){echo $data['email_err']; } ?></p>
+					<p><?php if(isset($data['email_err'])){echo $data['email_err']; } ?></p>
 					<p><?php if(isset($data['first_name_err'])){echo $data['first_name_err']; }?></p>
 					<p><?php if(isset($data['last_name_err'])){echo $data['last_name_err']; } ?></p>
 					<p><?php if(isset($data['phone_err'])){echo $data['phone_err']; } ?></p>
@@ -51,31 +51,31 @@
 				<h2 class="acc_h2_style">Account Details</h1>
 				<form action="<?php echo URLROOT;?>/customers/details" method="post" class="form_style">
 					<label class="acc_lbl">First name: 
-					<input type="text" name="first_name" class="input_field_acc" placeholder="First Name">
+					<input type="text" name="first_name" class="input_field_acc" placeholder="<?php echo $firstname; ?>">
 					</label>
 					<label class="acc_lbl">Last name: 
-					<input type="text" name="last_name" class="input_field_acc" placeholder="Last Name" required>
+					<input type="text" name="last_name" class="input_field_acc" placeholder="asd" required>
 					</label>
 					<label class="acc_lbl">Email: 
-					<input type="text" name="email" class="input_field_acc" placeholder="Email">
+					<input type="text" name="email" class="input_field_acc" placeholder="asd">
 					</label>
 					<label class="acc_lbl">Phone number: 
-					<input type="tel" name="phone" class="input_field_acc" placeholder="Phone" required>
+					<input type="tel" name="phone" class="input_field_acc" placeholder="asd" required>
 					</label>
 					<button type="submit" name="submit_update" class="btn_update">Update</button>	
 				</form>
 			</div>
 			<div id="acc_pass">
-			<div class="msg">
+				<div class="msg">
 					<p class="success"><?php if(isset($data['success_msg_pwd'])){echo $data['success_msg_pwd']; } ?></p>
-					<p><?php  if(isset($data['pwd_err'])){echo $data['pwd_err']; } ?></p>
+					<p><?php if(isset($data['pwd_err'])){echo $data['pwd_err']; } ?></p>
 					<p><?php if(isset($data['new_pwd_err'])){echo $data['new_pwd_err']; }?></p>
 					<p><?php if(isset($data['new_pwdr_err'])){echo $data['new_pwdr_err']; } ?></p>
 				</div>
 				<h2 class="acc_h2_style">Password</h2>
-					<form action="<?php echo URLROOT;?>/customers/password" method="post" class="form_style">
+				<form action="<?php echo URLROOT;?>/customers/password" method="post" class="form_style">
 					<label class="acc_lbl">Current Password: 
-					<input type="password" password="current_pwd" class="input_field_acc" placeholder="Current Password" required>
+					<input type="password" name="current_pwd" class="input_field_acc" placeholder="Current Password" required>
 					</label>
 					<label class="acc_lbl">New Password: 
 					<input type="password" name="new_pwd" class="input_field_acc" placeholder="New Password" required>
@@ -87,13 +87,24 @@
 				</form>
 			</div>
 			<div id="acc_address">
+				<div class="msg">
+					<p class="success"><?php if(isset($data['success_msg_address'])){echo $data['success_msg_address']; } ?></p>
+					<p><?php if(isset($data['city_err'])){echo $data['city_err']; } ?></p>
+					<p><?php if(isset($data['street_err'])){echo $data['street_err']; }?></p>
+					<p><?php if(isset($data['street_number_err'])){echo $data['street_number_err']; } ?></p>
+					<p><?php if(isset($data['building_err'])){echo $data['building_err']; } ?></p>
+					<p><?php if(isset($data['entrance_err'])){echo $data['entrance_err']; }?></p>
+					<p><?php if(isset($data['floor_err'])){echo $data['floor_err']; } ?></p>
+					<p><?php if(isset($data['apartment_err'])){echo $data['apartment_err']; }?></p>
+					<p><?php if(isset($data['bell_err'])){echo $data['bell_err']; } ?></p>
+				</div>
 				<h2 class="acc_h2_style">Address</h2>
-					<form action="<?php echo URLROOT;?>/customers/address" method="post" class="form_style">
+				<form action="<?php echo URLROOT;?>/customers/address" method="post" class="form_style">
 					<label class="acc_lbl">City*: 
-					<input type="text" text="city" class="input_field_acc" placeholder="City" required>
+					<input type="text" name="city" class="input_field_acc" placeholder="City" required>
 					</label>
 					<label class="acc_lbl">Street*: 
-					<input type="text" text="street" class="input_field_acc" placeholder="Street" required>
+					<input type="text" name="street" class="input_field_acc" placeholder="Street" required>
 					</label>
 					<label class="acc_lbl">Street Number*: 
 					<input type="text" name="street_num" class="input_field_acc" placeholder="Street Number" required>
@@ -102,16 +113,16 @@
 					<input type="text" name="building" class="input_field_acc" placeholder="Building">
 					</label>
 					<label class="acc_lbl">Entrance: 
-					<input type="text" text="entrance" class="input_field_acc" placeholder="Entrance">
+					<input type="text" name="entrance" class="input_field_acc" placeholder="Entrance">
 					</label>
 					<label class="acc_lbl">Floor: 
-					<input type="text" text="floor" class="input_field_acc" placeholder="Floor">
+					<input type="text" name="floor" class="input_field_acc" placeholder="Floor">
 					</label>
 					<label class="acc_lbl">Apartment: 
-					<input type="text" text="apartment" class="input_field_acc" placeholder="Apartment">
+					<input type="text" name="apartment" class="input_field_acc" placeholder="Apartment">
 					</label>
 					<label class="acc_lbl">Bell: 
-					<input type="text" text="bell" class="input_field_acc" placeholder="Bell">
+					<input type="text" name="bell" class="input_field_acc" placeholder="Bell">
 					</label>
 					<button type="submit" name="submit_update" class="btn_update">Confirm Address</button>
 				</form>
