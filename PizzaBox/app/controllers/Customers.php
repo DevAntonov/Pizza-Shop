@@ -137,15 +137,7 @@ class Customers extends Controller
                 }
             }
 
-        }/*else{
-            $data = [
-                'email' => '',
-                'pwd' => '',
-                'email_err' => '',
-                'pwd_err' => ''
-            ];
-        }*/
-
+        }
         $this->view('customers/login', $data);
     }
 
