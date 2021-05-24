@@ -1,6 +1,6 @@
-body{
+/*body{
     background-color: rgba(0,0,0,0.1);
-}
+}*/
 
 #account_page{
     position: relative;
@@ -17,7 +17,7 @@ body{
     justify-content: space-evenly;    
     margin-top:50px;
     margin-bottom: 50px;
-    height:500px;
+    height:600px;
 }
 
 #account_nav{
@@ -27,7 +27,7 @@ body{
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.5);
     border-top: 10px solid #da9938;
     border-bottom: 10px solid #da9938;
-    border-radius: 5px;
+    border-radius: 25px;
     
     
 }
@@ -38,7 +38,8 @@ body{
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.5);
     border-top: 10px solid #da9938;
     border-bottom: 10px solid #da9938;
-    border-radius: 5px;
+    /*border-radius: 5px;*/
+    border-radius:25px;
 }
 
 .acc_h2_style{
@@ -59,6 +60,7 @@ body{
     height:auto;
 }
 
+
 .btn{
     
     width:300px;
@@ -72,22 +74,24 @@ body{
     border-right:none;
     border-bottom: 1px solid #da9938;
     font-family: 'Roboto', sans-serif;
-    font-size:14px;
+    font-size:16px;
     transition-duration: 0.4s;
 }
 
 
 
 .btn:hover{
-    background-color: #da9938;
+    background-color: #e0a853;
 }
 
+
+
 #acc_details{
-    display:block;
-    /*margin-top:100px;*/
+    display:none;
     width: 450px;
     margin-left:auto;
-    margin-right: auto;   
+    margin-right: auto;  
+     
 }
 
 .form_style{
@@ -120,8 +124,6 @@ body{
 
 #acc_pass{
     display:none;
-    
-    /*margin-top:100px;*/
     width: 450px;
     margin-left:auto;
     margin-right: auto;   
@@ -129,6 +131,14 @@ body{
 
 #acc_address{
     display:none;
+    width: 450px;
+    margin-left:auto;
+    margin-right: auto;  
+}
+
+#my_data{
+    display:block;
+    padding-top: 116px;
     width: 450px;
     margin-left:auto;
     margin-right: auto;  
