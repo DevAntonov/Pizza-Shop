@@ -1,6 +1,6 @@
 <?php 
     if(!isLoggedIn()){
-        header('location: '. URLROOT . '/users/login');
+        header('location: '. URLROOT . '/customers/login');
     }
 
 ?>
