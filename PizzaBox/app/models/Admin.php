@@ -83,6 +83,9 @@ class Admin
 
     public function deleteCategory($categoryName)
     {
+        if($this->isCategoryExistingInMenu($categoryName)){
+            return false;
+        }
         if(!$this->isCategoryExisting($categoryName)){
             return false;
         }else{
@@ -227,6 +230,23 @@ class Admin
             return false;
         }
     }
+
+    public function isCategoryExistingInMenu($category)
+    {
+        
+        $id = $this->getCategoryID($category);
+
+
+        $this->db->query('SELECT category_id FROM menu_item WHERE category_id= :category');
+        $this->db->bind(':category', $id);
+        
+        if($this->db->rowCount() > 0){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
 
     public function getCategoryID($categoryName)
     {
