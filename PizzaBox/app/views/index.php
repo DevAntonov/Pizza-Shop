@@ -28,20 +28,20 @@
 <h2 class="style_hot_h2">Popular orders</h2>
 <div class="pizza_flexbox">
     <div class="flex_container">
-        <img class="pizza_img" src="/PizzaBox/public/images/hot/pepperonihot.jpg">
+        <img class="pizza_img" src="/PizzaBox/public/images/front/pepperonihot.jpg">
         <h2>Pizza I</h2>
         <p>Pizza Description: <br> Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
         <a href="<?php echo URLROOT; ?>/customers/login" class="a_link_box">Order Now</a>
     </div>
     <div class="flex_container">
-        <img class="pizza_img" src="/PizzaBox/public/images/hot/another.jpg">
+        <img class="pizza_img" src="/PizzaBox/public/images/front/another.jpg">
         <h2>Pizza II</h2>
         <p>Pizza Description: <br> Lorem ipsum dolor sit amet, consectetur adipiscing elit.
         Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
         <a href="<?php echo URLROOT; ?>/customers/login" class="a_link_box">Order Now</a>
     </div>
     <div class="flex_container">
-        <img class="pizza_img" src="/PizzaBox/public/images/hot/olive.jpg">
+        <img class="pizza_img" src="/PizzaBox/public/images/front/olive.jpg">
         <h2>Pizza III</h2>
         <p>Pizza Description: <br> Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
         <a href="<?php echo URLROOT; ?>/customers/login" class="a_link_box">Order Now</a>

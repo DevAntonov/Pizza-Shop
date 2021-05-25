@@ -264,7 +264,7 @@ class Admins extends Controller
                 if($this->adminModel->deleteCategory($_POST['selected_category_name'])){
                     $data['success_msg'] = "Category deleted!";
                 }else{
-                    $data['category_name_err'] = 'Invalid Category';
+                    $data['category_name_err'] = 'Invalid category or category name is still relevant to a menu item!';
                 }
             }else{
                 $this->view('admins/dashboard',$data);
