@@ -86,3 +86,42 @@ function displayMenuID()
     }
 
 }
+
+function displayMenuItems()
+{
+    $db = new Database();
+
+    $db->query('SELECT * FROM menu_item LEFT JOIN category ON menu_item.category_id=category.cid ORDER BY category_id');
+    $data = $db->resultArray();
+
+    $previousCategory = '';
+
+    foreach($data as $value)
+    {
+        $currentCategory = $value['category_id']; 
+
+        if($currentCategory != $previousCategory){
+            echo '<div class="exclude"';
+            echo '<h2>'.strval($value['ctg_name']).'</h2>';
+            echo '</div>';
+        }
+
+        echo 
+        '<div class="menu_flex_container">
+            <form action="<?php echo URLROOT;?>/orders/cart" method="post" class="form_menu">
+            <img class="menu_item_img" src="/PizzaBox/public/images/menu/'.$value['image'].'">
+            <h2 class="style_h2_menu">'.$value['name'].'</h2>
+            <div class="p_box">
+                <p class="p_left">Product ID: <b>'.$value['id'].'</b></p>
+                <p class="p_left">Products: <b>'.$value['description'].';</b></p>
+                <p class="p_left">Price: <b>'.$value['price'].'</b></p>
+            </div>
+            <input type="hidden" name="item" value="'.$value['id'].'"/>
+            <button type="submit" name="add" class="btn_add">Add</button>
+            </form>
+        </div>';
+
+        $previousCategory = $currentCategory;
+    }
+   
+}
