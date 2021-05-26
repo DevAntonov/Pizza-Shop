@@ -3,9 +3,6 @@
     <nav class="navigation_bar">
         <ul class="nav_links">
             <li>
-                <a href="<?php echo URLROOT; ?>/orders/menu">Menu</a>    
-            </li>
-            <li>
                 <a href="<?php echo URLROOT ?>/admins/dashboard">Dashboard</a>
             </li>
             <li>
