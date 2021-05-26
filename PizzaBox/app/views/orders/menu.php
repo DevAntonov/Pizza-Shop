@@ -35,6 +35,8 @@
 
 </section>
 </main>
-
+	<?php
+        require APPROOT . '/views/includes/footer.php';
+    ?>
 </body>
 </html>
