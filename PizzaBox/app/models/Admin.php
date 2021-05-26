@@ -259,6 +259,28 @@ class Admin
         return $row;
     }
 
+    public function getImageName($id)
+    {
+        $this->db->query('SELECT image FROM menu_item WHERE id=:id');
+        $this->db->bind(':id',$id);
+        $row = $this->db->resultRow();
+        $img = $row->image;
+
+        return $img;
+    }
+
+    public function isMenuIDExisting($id){
+        $this->db->query('SELECT id FROM menu_item WHERE id=:id');
+        $this->db->bind(':id',$id);
+
+        if($this->db->rowCount() > 0){
+            return true;
+        }else{
+            return false;
+        }
+
+    }
+
     public function createMenuItem($category, $products, $name, $price, $img)
     {
         if($this->isMenuItemExisting($name)){
@@ -280,6 +302,33 @@ class Admin
                 return false;
             }
             
+        }
+    }
+
+    public function updateMenuItem($id, $name, $price, $img)
+    {
+
+        $this->db->query('UPDATE menu_item SET name=:name, image=:img, price=:price WHERE id=:id');
+        $this->db->bind(':id', $id);
+        $this->db->bind(':name',$name);
+        $this->db->bind(':price',$price);
+        $this->db->bind(':img',$img);
+
+        if($this->db->execute()){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    public function deleteMenuItem($id)
+    {
+        $this->db->query('DELETE FROM menu_item WHERE id = :id');
+        $this->db->bind(':id',$id);
+        if($this->db->execute()){
+            return true;
+        }else{
+            return false;
         }
     }
 

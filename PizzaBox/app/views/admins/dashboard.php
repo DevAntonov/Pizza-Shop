@@ -57,7 +57,7 @@
                         <?php displayMenuItemOptions();?>
                         <hr>
                         <label class="lbl">Price
-                        <input type="text" name="price" class="input_field" placeholder="0.0" required>
+                        <input type="text" name="price" class="input_field" placeholder="0.00" required>
                         </label>
                         <hr>
                         <legend>Image</legend>
@@ -73,8 +73,8 @@
                     <form action="<?php echo URLROOT;?>/admins/updateMenuItem" method="post" class="form_style_admin" enctype="multipart/form-data">
                         <legend>Menu Item ID</legend>
                         <select class="options_box" name="menu_item_id">
-                            
-                        <!--<?php //require_once APPROOT . 'libraries/category_options.php' ?>-->
+                            <option value="">...</option>
+                            <?php displayMenuID()?>
                         </select>
                         <hr>
                         
@@ -100,8 +100,8 @@
                     <form action="<?php echo URLROOT;?>/admins/deleteMenuItem" method="post" class="form_style_admin">
                         <legend>Menu Item ID</legend>
                         <select class="options_box" name="menu_item_id">
-                            
-                        <!--<?php //require_once APPROOT . 'libraries/category_options.php' ?>-->
+                            <option value="">...</option>
+                            <?php displayMenuID() ?>
                         </select>
                         <button type="submit" name="submit_delete" class="btn_form">Delete</button>
                     </form>

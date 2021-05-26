@@ -165,6 +165,128 @@ class Admins extends Controller
 
     }
 
+    public function updateMenuItem()
+    {
+        $data = [
+            'success_msg_menu' => '',
+            'menu_id_err' => '',
+            'menu_item_name_err' => '',
+            'price_err' => '',
+            'img_err' => ''
+        ];
+
+        $nameValidation = "/^[a-zA-Z ]*$/";
+        $priceValidation = "/^\d{1,10}(?:\.\d{1,2})?$/";
+
+        if($_SERVER['REQUEST_METHOD'] == 'POST')
+        {
+            $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+
+            if(empty($_POST['menu_item_id'])){
+                $data['menu_id_err'] = 'Please select the ID of the menu item you wish to update!';
+            }elseif(!$this->adminModel->isMenuIDExisting($_POST['menu_item_id'])){
+                $data['menu_id_err'] = 'Invalid ID!';
+            }
+            if(empty($_POST['menu_item_name'])){
+                $data['menu_item_name_err'] = 'Name can not be empty!';
+            }elseif(!preg_match($nameValidation, $_POST['menu_item_name'])){
+                $data['menu_item_name_err'] = "Menu item name can only contain letters!";
+            }elseif($this->adminModel->isMenuItemExisting($_POST['menu_item_name'])){
+                $data['menu_item_name_err'] = "Menu item name is already taken!";
+            }
+            if(empty($_POST['price']) || $_POST['price'] == 0){
+                $data['price_err'] = "Menu item has no price!";
+            }elseif(!preg_match($priceValidation, $_POST['price'])){
+                $data['price_err'] = "Invalid price format!";
+            }elseif(preg_match($nameValidation, $_POST['price'])){
+                $data['price_err'] = "Price cannot contain letters!";
+            }
+            if(!isset($_FILES['img'])){
+                $data['img_err'] = 'No image file has been chosen!';
+            }
+
+            if(empty($data['menu_item_name_err']) && empty($data['price_err']) && empty($data['img_err'])){
+                
+                $image = preparedFileUpload();
+                    
+                if($image != '-1'){
+                    $img_name = $this->adminModel->getImageName($_POST['menu_item_id']);
+                    if(deleteFile($img_name)){
+                        if($this->adminModel->updateMenuItem($_POST['menu_item_id'],$_POST['menu_item_name'],$_POST['price'], $image))
+                        {
+                            $data['success_msg_menu'] = "Menu item successfully updated!";
+                            $this->view('admins/dashboard',$data);
+                            echo '<script type="text/javascript"> displayMenuForm(); </script>';
+                        }else{
+                            $data['menu_item_name_err'] = "Menu item name is taken!";
+                            $this->view('admins/dashboard',$data);
+                            echo '<script type="text/javascript"> displayMenuForm(); </script>';
+                        }
+                    }else{
+                        $data['img_err']='Operation failed! Could not delete image file of previous menu item!';
+                        $this->view('admins/dashboard',$data);
+                        echo '<script type="text/javascript"> displayMenuForm(); </script>';
+                    }
+                }
+                elseif($image == '-1')
+                {
+                    $data['img_err'] = 'File already exists!';
+                    $this->view('admins/dashboard',$data);
+                    echo '<script type="text/javascript"> displayMenuForm(); </script>';
+                }
+                else{
+                    $data['img_err'] = 'Unsupported file type! Supported file types are ".jpg", ".jpeg" and ".png"';
+                    $this->view('admins/dashboard',$data);
+                    echo '<script type="text/javascript"> displayMenuForm(); </script>';
+                }
+            }else{
+                $this->view('admins/dashboard',$data);
+                echo '<script type="text/javascript"> displayMenuForm(); </script>';
+            }
+
+        }
+
+        $this->view('admins/dashboard',$data);
+    }
+
+    public function deleteMenuItem()
+    {
+        $data = [
+            'menu_id_err' => '',
+            'success_msg_menu' => ''
+        ];
+
+        if($_SERVER['REQUEST_METHOD'] == 'POST')
+        {
+            $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+
+            if(empty($_POST['menu_item_id'])){
+                $data['menu_id_err'] = 'Please select the ID of the menu item you wish to delete!';
+            }elseif(!$this->adminModel->isMenuIDExisting($_POST['menu_item_id'])){
+                $data['menu_id_err'] = 'Invalid ID!';
+            }
+
+            $img_name = $this->adminModel->getImageName($_POST['menu_item_id']);
+
+            if(empty($data['menu_id_err']) && deleteFile($img_name)){
+                if($this->adminModel->deleteMenuItem($_POST['menu_item_id'])){
+                    $data['success_msg_menu'] = "Menu item successfully deleted!";
+                    $this->view('admins/dashboard',$data);
+                    echo '<script type="text/javascript"> displayMenuForm(); </script>';
+                }else{
+                    $data['menu_id_err'] = 'Something went wrong while trying to delete menu item!';
+                    $this->view('admins/dashboard',$data);
+                    echo '<script type="text/javascript"> displayMenuForm(); </script>';
+                }
+            }else{
+                $this->view('admins/dashboard',$data);
+                echo '<script type="text/javascript"> displayMenuForm(); </script>';
+            }
+        }
+
+        $this->view('admins/dashboard',$data);
+    }
+
     //Category
 
     public function createCategory()

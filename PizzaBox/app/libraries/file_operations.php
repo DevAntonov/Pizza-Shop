@@ -30,3 +30,15 @@ function preparedFileUpload()
         return false;
     }
 }
+
+function deleteFile($file_name)
+{
+    $dir = getcwd();
+    $path = '\\images\\menu\\';
+    $file = $dir . $path .$file_name;
+    if(!unlink($file)){
+        return false;
+    }else{
+        return true;
+    }
+}

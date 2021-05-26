@@ -138,6 +138,7 @@ class Customers extends Controller
             }
 
         }
+
         $this->view('customers/login', $data);
     }
 
@@ -397,6 +398,8 @@ class Customers extends Controller
 
                 if($this->customerModel->changeAddressDetails(trim($address), $_SESSION['customer_id'])) {
                     $data['success_msg_address'] = "You have successfully changed your address details!";
+                    $this->view('customers/account',$data);
+                    echo '<script type="text/javascript"> displayAddressForm(); </script>';
                 }else {
                     die('Something went wrong!');
                 }
@@ -405,5 +408,7 @@ class Customers extends Controller
 
         $this->view('customers/account');
     }
+
+
    
 }

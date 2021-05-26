@@ -104,7 +104,7 @@
 			
 			<div id="acc_address">
 				<div class="msg">
-					<p class="success"><?php if(isset($data['success_msg_adr'])){echo $data['success_msg_adr']; } ?></p>
+					<p class="success"><?php if(isset($data['success_msg_address'])){echo $data['success_msg_address']; } ?></p>
 					<p><?php  if(isset($data['city_err'])){echo $data['city_err']; } ?></p>
 					<p><?php if(isset($data['str_name_err'])){echo $data['str_name_err']; }?></p>
 					<p><?php if(isset($data['str_num_err'])){echo $data['str_num_err']; } ?></p>

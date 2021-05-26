@@ -2,6 +2,7 @@
     if(!isLoggedIn()){
         header('location: '. URLROOT . '/customers/login');
     }
+    
 
 ?>
 
