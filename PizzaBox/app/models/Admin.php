@@ -254,7 +254,7 @@ class Admin
         $this->db->bind(':name', $categoryName);
 
         $row = $this->db->resultRow();
-        $row= $row->id;
+        $row= $row->cid;
 
         return $row;
     }
