@@ -101,8 +101,10 @@ function displayMenuItems()
         $currentCategory = $value['category_id']; 
 
         if($currentCategory != $previousCategory){
+            //echo '<hr class="hr_border">';
             echo '<div class="exclude"';
             echo '<h2>'.strval($value['ctg_name']).'</h2>';
+            echo '<hr class="hr_border">';
             echo '</div>';
         }
 
@@ -123,5 +125,7 @@ function displayMenuItems()
 
         $previousCategory = $currentCategory;
     }
+
+   
    
 }
