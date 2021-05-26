@@ -26,21 +26,25 @@
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.5);
     text-align: center;
     background-color: #fff;
+    border-radius: 25px;
+   
 }
 
 .style_h2_menu{
-    border-bottom: 5px solid #dd8e15;
+    border-bottom: 5px dotted #dd8e15;
     padding-bottom: 15px;
 }
 
 .p_box{
-    height:140px;
+    height:150px;
 }
 
 .p_left{
     margin-left:10px;
+    margin-right:5px;
     text-align: left;
     font-size:18px;
+    
 }
 
 .menu_item_img{
@@ -50,14 +54,25 @@
     margin-left:auto;
     margin-right: auto;
     border-top: 5px solid #dd8e15;
+    border-radius: 25px;
 }
 
+.form_menu{
+    border-radius: 25px;
+}
 .btn_add{
     width:100%;
-    height:40px;
+    height:50px;
     margin-top:20px;
     border-style: none;
     background-color: #dd8e15;
     color:#fff;
+}
+
+
+.hr_border{
+    
+    width:60%;
+    border: 2px solid #dd8e15;
 }
 
