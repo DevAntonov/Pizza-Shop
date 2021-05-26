@@ -80,10 +80,6 @@ function displayMenuID()
     $db->query('SELECT id FROM menu_item');
     $data = $db->resultArray();
 
-    if(empty($data)){
-        return false;
-    }
-
     foreach($data as $value)
     {
         echo'<option value="'.strval($value['id']).'">'.strval($value['id']).'</option>';
@@ -142,6 +138,10 @@ function displayMenuHot()
 
     $db->query('SELECT * FROM menu_item LEFT JOIN category ON menu_item.category_id=category.cid ORDER BY category_id');
     $data = $db->resultArray();
+    
+    if(empty($data)){
+        return false;
+    }
 
     $previousCategory = '';
 
