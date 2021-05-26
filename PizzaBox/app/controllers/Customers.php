@@ -138,8 +138,46 @@ class Customers extends Controller
             }
 
         }
-
         $this->view('customers/login', $data);
+    }
+
+    public function createSession($customer)
+    {
+        session_start();
+        $_SESSION['loggedin'] = true;
+        $_SESSION['customer_id'] = $customer->id;
+        $_SESSION['first_name'] = $customer->first_name;
+        $_SESSION['last_name'] = "";
+        $_SESSION['email'] = "";
+        $_SESSION['phone_number'] = "";
+        $_SESSION['address'] = "";
+    }
+
+    public function logout()
+    {
+        unset($_SESSION['loggedin']);
+        unset($_SESSION['customer_id']);
+        unset($_SESSION['first_name']);
+        unset($_SESSION['last_name']);
+        unset($_SESSION['email']);
+        unset($_SESSION['phone_number']);
+        unset($_SESSION['address']);
+        header('location: '. URLROOT . '/index');
+    } 
+
+    public function account()
+    {
+        $id = $_SESSION['customer_id'];
+        $user_data = $this->customerModel->getAccountData($id);
+
+        $_SESSION['first_name'] = $user_data->first_name;
+        $_SESSION['last_name'] = $user_data->last_name;
+        $_SESSION['email'] = $user_data->email;
+        $_SESSION['phone_number'] = $user_data->phone_number;
+        $_SESSION['address'] = $user_data->address;
+
+        $this->view('customers/account');
+        
     }
 
     public function details() 
@@ -156,6 +194,8 @@ class Customers extends Controller
             'phone_err' => '',
             'success_msg' => ''
         ];
+
+        $customerID = $_SESSION['customer_id'];
 
         if($_SERVER['REQUEST_METHOD'] == 'POST')
         {
@@ -212,23 +252,31 @@ class Customers extends Controller
 
             //Empty Error Messages check
             if(empty($data['email_err']) && empty($data['first_name_err']) && empty($data['last_name_err']) && empty($data['phone_err'])){
-                if($this->customerModel->changeAccountDetails($data, $_SESSION['customer_id'])){
+                if($this->customerModel->changeAccountDetails($data, $customerID)){
                     $data['success_msg'] = "You have successfully changed your details!";
+                    $this->view('customers/account',$data);
+                    echo '<script type="text/javascript"> displayDetailsForm(); </script>';
                 }else{
+                    
                     die('Something went wrong!');
                 }
+            }else{
+                $this->view('customers/account',$data);
+                echo '<script type="text/javascript"> displayDetailsForm(); </script>';
+                    
             }
         }
 
         $this->view('customers/account',$data);
+        
     }
 
     public function password()
     {
         $data = [
-            'password' => '',
-            'new_password' => '',
-            'confirm_password' => '',
+            'current_pwd' => '',
+            'new_pwd' => '',
+            'new_pwdr' => '',
             'pwd_err' => '',
             'new_pwd_err' => '',
             'new_pwdr_err' => '',
@@ -240,9 +288,9 @@ class Customers extends Controller
             $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
 
             $data = [
-                'password' => trim($_POST['current_pwd']),
-                'new_password' => trim($_POST['new_pwd']),
-                'confirm_password' => trim($_POST['repeat_pwd']),
+                'current_pwd' => trim($_POST['current_pwd']),
+                'new_pwd' => trim($_POST['new_pwd']),
+                'new_pwdr' => trim($_POST['new_pwdr']),
                 'pwd_err' => '',
                 'new_pwd_err' => '',
                 'new_pwdr_err' => '',
@@ -251,40 +299,45 @@ class Customers extends Controller
 
             
             //Password
-            if(empty($data['password'])) {
+            if(empty($data['current_pwd'])) {
                 $data['pwd_err'] = "Please enter your password!";
-            }elseif ($this->customerModel->checkPassword($data['password'], $_SESSION['customer_id'])){
+            }elseif ($this->customerModel->checkPassword($data['current_pwd'], $_SESSION['customer_id'])){
                 $data['pwd_err'] = "Wrong password!";
             }
 
             //New Password Validation
             $pwdValidation = "/^(.{0,3}|[^a-z]*|[^\d]*)$/i";
 
-            if(empty($data['new_password'])){
+            if(empty($data['new_pwd'])){
                 $data['new_pwd_err'] = "Please enter your new password!";
-            }elseif(strlen($data['new_password'] < 4 )){
+            }elseif(strlen($data['new_pwd'] < 4 )){
                 $data['new_pwd_err'] = "Password must be at least 4 characters!";
-            }elseif(!preg_match($pwdValidation, $data['new_password'])){
+            }elseif(!preg_match($pwdValidation, $data['new_pwd'])){
                 $data['new_pwd_err'] = "Password must contain at least one numeric value!";
             }
 
             //Password Confirm Validation
-            if(empty($data['confirm_password'])){
+            if(empty($data['new_pwdr'])){
                 $data['new_pwdr_err'] = "Empty confirm password field";
             }else{
-                if($data['new_password'] != $data['confirm_password']){
+                if($data['new_pwd'] != $data['new_pwdr']){
                     $data['new_pwdr_err'] = "Passwords do not match!";
                 }
             }
 
             //Check for errors
             if(empty($data['new_pwd_err']) && empty($data['pwd_err']) && empty($data['new_pwdr_err'])) {
-                $data['new_password'] = password_hash($data['new_password'], PASSWORD_DEFAULT);
-                if($this->customerModel->changePassword($data['new_password'], $_SESSION['customer_id'])) {
+                $data['new_pwd'] = password_hash($data['new_pwd'], PASSWORD_DEFAULT);
+                if($this->customerModel->changePassword($data['new_pwd'], $_SESSION['customer_id'])) {
                     $data['success_msg_pwd'] = "You have successfully changed your password!";
+                    $this->view('customers/account',$data);
+                    echo '<script type="text/javascript"> displayPasswordForm(); </script>';
                 }else {
                     die('Something went wrong!');
                 }
+            }else{
+                $this->view('customers/account',$data);
+                echo '<script type="text/javascript"> displayPasswordForm(); </script>';
             }
         }
 
@@ -301,7 +354,6 @@ class Customers extends Controller
             'entrance' => '',
             'floor' => '',
             'apartment' => '',
-            'bell' => '',
             'city_err' => '',
             'street_err' => '',
             'street_number_err' => '',
@@ -309,7 +361,6 @@ class Customers extends Controller
             'entrance_err' => '',
             'floor_err' => '',
             'apartment_err' => '',
-            'bell_err' => '',
             'success_msg_address' => ''
         ];
 
@@ -326,7 +377,6 @@ class Customers extends Controller
                 'entrance' => trim($_POST['entrance']),
                 'floor' => trim($_POST['floor']),
                 'apartment' => trim($_POST['apartment']),
-                'bell' => trim($_POST['bell']),
                 'city_err' => '',
                 'street_err' => '',
                 'street_number_err' => '',
@@ -334,12 +384,11 @@ class Customers extends Controller
                 'entrance_err' => '',
                 'floor_err' => '',
                 'apartment_err' => '',
-                'bell_err' => '',
                 'success_msg_address' => ''
             ];
 
             if(empty($data['city_err']) && empty($data['street_err']) && empty($data['street_number_err']) && empty($data['building_err'])
-                && empty($data['entrance_err']) && empty($data['floor_err']) && empty($data['apartment_err']) && empty($data['ball_err']))
+                && empty($data['entrance_err']) && empty($data['floor_err']) && empty($data['apartment_err']))
             {
                 $address = '';
                 foreach ($data as $value) {
@@ -356,29 +405,5 @@ class Customers extends Controller
 
         $this->view('customers/account');
     }
-
-    public function createSession($customer)
-    {
-        session_start();
-        $_SESSION['loggedin'] = true;
-        $_SESSION['customer_id'] = $customer->id;
-        $_SESSION['customer_name'] = $customer->first_name;
-    }
-
-    public function logout()
-    {
-        unset($_SESSION['loggedin']);
-        unset($_SESSION['customer_id']);
-        unset($_SESSION['customer_name']);
-        header('location: '. URLROOT . '/index');
-    }
-
-    public function account()
-    {
-        $dataRow = $this->customerModel->getAccountDetails($_SESSION['customer_id']);
-        $data = [
-            'first_name' => $dataRow->first_name
-        ];
-        $this->view('customers/account', $data);
-    }
+   
 }
