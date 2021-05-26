@@ -112,10 +112,10 @@
 				<h2 class="acc_h2_style">Address</h2>
 					<form action="<?php echo URLROOT;?>/customers/address" method="post" class="form_style">
 					<label class="acc_lbl">City*: 
-					<input type="text" text="city" class="input_field_acc" placeholder="City" required>
+					<input type="text" name="city" class="input_field_acc" placeholder="City" required>
 					</label>
 					<label class="acc_lbl">Street*: 
-					<input type="text" text="street" class="input_field_acc" placeholder="Street" required>
+					<input type="text" name="street" class="input_field_acc" placeholder="Street" required>
 					</label>
 					<label class="acc_lbl">Street Number*: 
 					<input type="text" name="street_num" class="input_field_acc" placeholder="Street Number" required>
@@ -124,13 +124,13 @@
 					<input type="text" name="building" class="input_field_acc" placeholder="Building">
 					</label>
 					<label class="acc_lbl">Entrance: 
-					<input type="text" text="entrance" class="input_field_acc" placeholder="Entrance">
+					<input type="text" name="entrance" class="input_field_acc" placeholder="Entrance">
 					</label>
 					<label class="acc_lbl">Floor: 
-					<input type="text" text="floor" class="input_field_acc" placeholder="Floor">
+					<input type="text" name="floor" class="input_field_acc" placeholder="Floor">
 					</label>
 					<label class="acc_lbl">Apartment: 
-					<input type="text" text="apartment" class="input_field_acc" placeholder="Apartment">
+					<input type="text" name="apartment" class="input_field_acc" placeholder="Apartment">
 					</label>
 					<button type="submit" name="submit_update" class="btn_update">Confirm Address</button>
 				</form>
