@@ -13,8 +13,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content ="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/PizzaBox/public/css/style.css">
+    <link rel="stylesheet" href="/PizzaBox/public/css/style-order.css">
 	<link rel="stylesheet" href="/PizzaBox/public/css/style-header.css">
-	<link rel="stylesheet" href="/PizzaBox/public/css/style-account.css">
 	<link rel="stylesheet" href="/PizzaBox/public/css/style-errors.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -31,10 +31,9 @@
 
 <main>
 <section id="pizza_section">
+    <?php displayMenuItems()?>
 
 </section>
-
-
 </main>
 
 </body>
