@@ -32,7 +32,7 @@ class Admin
 
     public function isCategoryExisting($categoryName)
     {
-        $this->db->query('SELECT name FROM category WHERE name= :name');
+        $this->db->query('SELECT ctg_name FROM category WHERE ctg_name= :name');
         $this->db->bind(':name', $categoryName);
         
         if($this->db->rowCount() > 0){
@@ -45,7 +45,7 @@ class Admin
     public function createCategory($categoryName)
     {
        if(!$this->isCategoryExisting($categoryName)){
-            $this->db->query('INSERT INTO category (name) VALUES(:name)');
+            $this->db->query('INSERT INTO category (ctg_name) VALUES(:name)');
             $this->db->bind(':name', $categoryName);
 
             if($this->db->execute()){
@@ -65,7 +65,7 @@ class Admin
 
         if($this->isCategoryExisting($categoryOldName)){
 
-            $this->db->query('UPDATE category SET name = :newName WHERE name = :oldName');
+            $this->db->query('UPDATE category SET ctg_name = :newName WHERE ctg_name = :oldName');
             $this->db->bind(':newName', $categoryNewName);
             $this->db->bind(':oldName', $categoryOldName);
 
@@ -89,7 +89,7 @@ class Admin
         if(!$this->isCategoryExisting($categoryName)){
             return false;
         }else{
-            $this->db->query('DELETE FROM category WHERE name = :name');
+            $this->db->query('DELETE FROM category WHERE ctg_name = :name');
             $this->db->bind(':name', $categoryName);
 
             if($this->db->execute()){
@@ -250,7 +250,7 @@ class Admin
 
     public function getCategoryID($categoryName)
     {
-        $this->db->query('SELECT id FROM category WHERE name=:name');
+        $this->db->query('SELECT cid FROM category WHERE ctg_name=:name');
         $this->db->bind(':name', $categoryName);
 
         $row = $this->db->resultRow();
