@@ -126,4 +126,22 @@ class Customer
         
         return $row;
     }
+
+    public function changeAddressDetails($address, $customerID) 
+    {
+        $this->db->query(
+            'UPDATE customer
+            SET address = :address
+            WHERE id = :id'
+        ); 
+
+        $this->db->bind(':address', $address);
+        $this->db->bind(':id', $customerID);
+
+        if($this->db->execute()){
+            return true;
+        }else{
+            return false;
+        }
+    }
 }
