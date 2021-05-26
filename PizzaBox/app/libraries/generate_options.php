@@ -5,14 +5,14 @@
 function displayCategoryOptions()
 {
     $db = new Database();
-    $db->query('SELECT name FROM category');
+    $db->query('SELECT ctg_name FROM category');
 
     $data = $db->resultArray();
 
 
     foreach($data as $value)
     {
-        echo'<option value="'.strval($value['name']).'">'.strval($value['name']).'</option>';
+        echo'<option value="'.strval($value['ctg_name']).'">'.strval($value['ctg_name']).'</option>';
     }
 }
 
