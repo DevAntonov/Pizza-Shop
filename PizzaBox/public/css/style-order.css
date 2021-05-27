@@ -33,10 +33,16 @@
 .style_h2_menu{
     border-bottom: 5px dotted #dd8e15;
     padding-bottom: 15px;
+    margin-left:auto;
+    margin-right: auto;
+    width:90%;
 }
 
 .p_box{
     height:150px;
+    margin-left:auto;
+    margin-right: auto;
+    width:90%;
 }
 
 .p_left{
@@ -61,12 +67,15 @@
     border-radius: 25px;
 }
 .btn_add{
-    width:100%;
+    width:95%;
     height:50px;
     margin-top:20px;
     border-style: none;
     background-color: #dd8e15;
     color:#fff;
+    border-radius: 25px;
+    font-size:20px;
+    border-radius: 15px;
 }
 
 

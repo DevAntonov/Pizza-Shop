@@ -191,9 +191,16 @@ body{
 .style_h2_menu{
     border-bottom: 5px dotted #dd8e15;
     padding-bottom: 15px;
+    margin-left:auto;
+    margin-right: auto;
+    width:90%;
 }
 .p_box{
     height:150px;
+    border-bottom: 5px dotted #dd8e15;
+    margin-left:auto;
+    margin-right: auto;
+    width:90%;
 }
 
 .p_left{
@@ -215,6 +222,7 @@ body{
     text-align: center;
     background-color: #fff;
     border-radius: 25px;
+    padding-bottom: 15px;
    
 }
 
@@ -228,18 +236,6 @@ body{
     border-radius: 25px;
 }
 
-.flex_container h2{
-    padding-bottom:10px;
-    border-bottom: 2px solid #dd8e15;
-}
-
-.flex_container p{
-    padding-left: 6px;
-    padding-right: 6px;
-    text-align: left;
-    height:123px;
-}
-
 .a_link_box{
     display: block;
     text-decoration: none;
@@ -248,11 +244,13 @@ body{
     background-color: #dd8e15;
     font-size:20px;
     font-weight: bold;
-    width:351px;
+    width:95%;
     height:40px;
     padding-top:15px;
     margin-left:auto;
     margin-right:auto;
+    margin-top:15px;
+    border-radius: 15px;
 
 }
 
