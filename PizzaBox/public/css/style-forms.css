@@ -2,15 +2,20 @@
 	margin: 0px;
 	padding: 0px;
     font-family: sans-serif;
+	
 }
+
 
 body{
     background-color: rgba(0,0,0,0.1);
+	overflow:hidden;
+	
 }
 
 #wrap_form{
-	width: 100%;
+	width: auto;
 	height: auto;
+	
 }
 
 .form_box{

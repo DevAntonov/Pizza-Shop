@@ -14,6 +14,8 @@
     font-size: 46px;
     font-family: 'Courgette', cursive;
     color:#dd8e15;
+    /*width:90%;
+    border-bottom: 2px solid #dd8e15;*/
 }
 
 .menu_flex_container{
@@ -26,7 +28,7 @@
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.5);
     text-align: center;
     background-color: #fff;
-    border-radius: 25px;
+    border-radius: 20px;
    
 }
 
@@ -60,7 +62,7 @@
     margin-left:auto;
     margin-right: auto;
     border-top: 5px solid #dd8e15;
-    border-radius: 25px;
+    border-radius: 20px;
 }
 
 .form_menu{
@@ -81,7 +83,7 @@
 
 .hr_border{
     
-    width:60%;
+    width:90%;
     border: 2px solid #dd8e15;
 }
 
