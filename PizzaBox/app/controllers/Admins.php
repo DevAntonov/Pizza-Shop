@@ -262,10 +262,12 @@ class Admins extends Controller
 
             if(empty($_POST['menu_item_id'])){
                 $data['menu_id_err'] = 'Please select the ID of the menu item you wish to delete!';
+
             }elseif(!$this->adminModel->isMenuIDExisting($_POST['menu_item_id'])){
                 $data['menu_id_err'] = 'Invalid ID!';
             }
 
+            //if(!empty($_POST['menu_item_id'])){}
             $img_name = $this->adminModel->getImageName($_POST['menu_item_id']);
 
             if(empty($data['menu_id_err']) && deleteFile($img_name)){
@@ -297,7 +299,7 @@ class Admins extends Controller
             'success_msg' => ''
         ];
 
-        $nameValidation = "/^[a-zA-Z]*$/";
+        $nameValidation = "/^[a-zA-Z ]*$/";
 
         if($_SERVER['REQUEST_METHOD'] == 'POST')
         {
@@ -336,7 +338,7 @@ class Admins extends Controller
             'success_msg' => ''
         ];
 
-        $nameValidation = "/^[a-zA-Z]*$/";
+        $nameValidation = "/^[a-zA-Z ]*$/";
 
         if($_SERVER['REQUEST_METHOD'] == 'POST')
         {
@@ -455,7 +457,7 @@ class Admins extends Controller
             'success_msg_product' => ''
         ];
 
-        $nameValidation = "/^[a-zA-Z]*$/";
+        $nameValidation = "/^[a-zA-Z ]*$/";
 
         if($_SERVER['REQUEST_METHOD'] == 'POST')
         {
@@ -516,7 +518,7 @@ class Admins extends Controller
             'success_msg_product' => ''
         ];
 
-        $nameValidation = "/^[a-zA-Z]*$/";
+        $nameValidation = "/^[a-zA-Z ]*$/";
 
         if($_SERVER['REQUEST_METHOD'] == 'POST')
         {
