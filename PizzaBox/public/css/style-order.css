@@ -60,7 +60,7 @@
     margin-left:auto;
     margin-right: auto;
     border-top: 5px solid #dd8e15;
-    border-radius: 25px;
+    border-radius: 20px;
 }
 
 .form_menu{
@@ -81,7 +81,7 @@
 
 .hr_border{
     
-    width:60%;
+    width:90%;
     border: 2px solid #dd8e15;
 }
 
