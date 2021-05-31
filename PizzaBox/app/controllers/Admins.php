@@ -336,7 +336,7 @@ class Admins extends Controller
             'success_msg' => ''
         ];
 
-        $nameValidation = "/^[a-zA-Z]*$/";
+        $nameValidation = "/^[a-zA-Z ]*$/";
 
         if($_SERVER['REQUEST_METHOD'] == 'POST')
         {
@@ -516,7 +516,7 @@ class Admins extends Controller
             'success_msg_product' => ''
         ];
 
-        $nameValidation = "/^[a-zA-Z]*$/";
+        $nameValidation = "/^[a-zA-Z ]*$/";
 
         if($_SERVER['REQUEST_METHOD'] == 'POST')
         {

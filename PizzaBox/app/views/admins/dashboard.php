@@ -12,6 +12,8 @@
         <link rel="stylesheet" href="/PizzaBox/public/css/style.css">
         <link rel="stylesheet" href="/PizzaBox/public/css/style-header.css">
         <link rel="stylesheet" href="/PizzaBox/public/css/style-admin.css">
+        <link rel="stylesheet" href="/PizzaBox/public/css/media-style.css">
+        <link rel="stylesheet" href="/PizzaBox/public/css/media-dashboard.css">
         <link rel="preconnect" href="https://fonts.gstatic.com">
         <link rel="preconnect" href="https://fonts.gstatic.com">
         <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
@@ -38,6 +40,7 @@
                 <p class="p_info"><?php  if(isset($data['menu_item_name_err'])){echo $data['menu_item_name_err']; } ?></p>
                 <p class="p_info"><?php  if(isset($data['price_err'])){echo $data['price_err']; } ?></p>
                 <p class="p_info"><?php  if(isset($data['no_products_selected'])){echo $data['no_products_selected']; } ?></p>
+                <p class="p_info"><?php  if(isset($data['menu_id_err'])){echo $data['menu_id_err']; } ?></p>
                 <p class="p_info"><?php  if(isset($data['img_err'])){echo $data['img_err']; } ?></p>
                 <div class="details_box">
                     <h2 class="h2_style_admin">Create Menu Item</h2>
