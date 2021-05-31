@@ -261,18 +261,12 @@ class Admin
 
     public function getImageName($id)
     {
-        if($this->isMenuItemExisting($id)){
-            $this->db->query('SELECT image FROM menu_item WHERE id=:id');
-            $this->db->bind(':id',$id);
+        $this->db->query('SELECT image FROM menu_item WHERE id=:id');
+        $this->db->bind(':id',$id);
+        $row = $this->db->resultRow();
+        $img = $row->image;
 
-            $row = $this->db->resultRow();
-            $img = $row->image;
-
-            return $img;
-        }else{
-            return false;
-        }
-        
+        return $img;
     }
 
     public function isMenuIDExisting($id){

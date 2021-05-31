@@ -19,3 +19,12 @@ function isLoggedInAdmin()
         return false;
     }
 }
+
+function isLoggedInDeliveryman()
+{
+    if(isset($_SESSION['loggedinDeliveryman']) && $_SESSION['loggedinDeliveryman'] === true){
+        return true;
+    }else{
+        return false;
+    }
+}

@@ -73,6 +73,7 @@ function displayMenuItemOptions()
 
 }
 
+
 function displayMenuID()
 {
     $db = new Database();
@@ -113,7 +114,7 @@ function displayMenuItems()
 
         echo 
         '<div class="menu_flex_container">
-            <form action="/PizzaBox/orders/cart" method="post" class="form_menu">
+            <form action="/PizzaBox/orders/cartControl" method="post" class="form_menu">
             <img class="menu_item_img" src="/PizzaBox/public/images/menu/'.$value['image'].'">
             <h2 class="style_h2_menu">'.$value['name'].'</h2>
             <div class="p_box">
@@ -122,6 +123,8 @@ function displayMenuItems()
                 <p class="p_left">Price: <b>'.$value['price'].'</b></p>
             </div>
             <input type="hidden" name="item" value="'.$value['id'].'"/>
+            <input type="hidden" name="Action" value="Add"/>
+            <input type="hidden" name="quantity" value="1"/>
             <button type="submit" name="add" class="btn_add">Add</button>
             </form>
         </div>';
@@ -138,7 +141,7 @@ function displayMenuHot()
 
     $db->query('SELECT * FROM menu_item LEFT JOIN category ON menu_item.category_id=category.cid ORDER BY category_id');
     $data = $db->resultArray();
-
+    
     if(empty($data)){
         return false;
     }
@@ -166,6 +169,78 @@ function displayMenuHot()
 
         $previousCategory = $currentCategory;
 
-        }
-   }
-   
+    }
+}  
+
+
+function displayCartItems()
+{
+    $ShoppingCart = $_SESSION['shopping_cart'];
+
+    // Reverse the array of items so the newest items be first
+    $ShoppingCart = array_reverse($ShoppingCart);
+
+    // Unset these so they don't show up in cart listing
+    unset($ShoppingCart['total_items']); 
+    unset($ShoppingCart['total_price']); 
+         
+
+    if(empty($ShoppingCart)){
+        return false;
+    }
+
+    foreach ($ShoppingCart as $value) {
+            echo 
+            '<div class="menu_flex_container">
+                <form action="/PizzaBox/orders/cartControl" method="post" class="form_menu">
+                <div class="p_box">
+                    <p class="p_left">Name: <b>'.$value['name'].'</b></p>
+                    <p class="p_left">Product ID: <b>'.$value['id'].'</b></p>
+                    <p class="p_left">Quantity: <b>'.$value['qty'].';</b></p>
+                    <p class="p_left">Price: <b>'.$value['price'].'</b></p>
+                </div>
+                <input type="hidden" name="item" value="'.$value['id'].'"/>
+                <input type="hidden" name="Action" value="Remove"/>
+                <input type="hidden" name="qty" value="'.$value['qty'].'"/>
+                <button type="submit" name="Remove" class="btn_remove">Remove</button>
+                </form>
+            </div>';
+    }
+}
+
+function displayPendingOrders()
+{
+    $db = new Database();
+
+    $db->query('SELECT o.id, c.first_name, c.last_name, c.address, c.phone_number
+    FROM orders o INNER JOIN customer c on o.customer = c.id WHERE status = "Pending" ORDER BY o.id;');
+
+    $rows_orders_customers = $db->resultArray();
+
+    $db->query('SELECT order_id, menu_item, quantity From order_details WHERE order_id = 4;');
+    $rows_order_details = $db->resultArray();
+
+    $pendingOrders = [];
+
+    if(empty($pendingOrders)){
+        return false;
+    }
+
+    foreach ($pendingOrders as $value) {
+            echo 
+            '<div class="menu_flex_container">
+                <form action="/PizzaBox/orders/cartControl" method="post" class="form_menu">
+                <div class="p_box">
+                    <p class="p_left">Name: <b>'.$value['name'].'</b></p>
+                    <p class="p_left">Product ID: <b>'.$value['id'].'</b></p>
+                    <p class="p_left">Quantity: <b>'.$value['qty'].';</b></p>
+                    <p class="p_left">Price: <b>'.$value['price'].'</b></p>
+                </div>
+                <input type="hidden" name="item" value="'.$value['id'].'"/>
+                <input type="hidden" name="Action" value="Remove"/>
+                <input type="hidden" name="qty" value="'.$value['qty'].'"/>
+                <button type="submit" name="Remove" class="btn_remove">Remove</button>
+                </form>
+            </div>';
+    }
+}
