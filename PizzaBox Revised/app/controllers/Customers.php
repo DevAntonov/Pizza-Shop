@@ -152,6 +152,7 @@ class Customers extends Controller
         $_SESSION['email'] = "";
         $_SESSION['phone_number'] = "";
         $_SESSION['address'] = "";
+        $_SESSION['cart'] = array();
     }
 
     public function logout()
@@ -163,6 +164,7 @@ class Customers extends Controller
         unset($_SESSION['email']);
         unset($_SESSION['phone_number']);
         unset($_SESSION['address']);
+        unset($_SESSION['cart']);
         header('location: '. URLROOT . '/index');
     } 
 

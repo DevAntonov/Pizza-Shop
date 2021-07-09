@@ -287,9 +287,9 @@ function displayOrderItem()
     $db = new Database();
     $item_id = $_POST['item'];
 
-    if(empty($item_id)){
+    /*if(empty($item_id)){
         header('location:'. URLROOT . '/orders/menu');
-    }
+    }*/
 
     $db->query('SELECT * FROM menu_item WHERE id = :item_id');
     $db->bind(':item_id', $item_id);
@@ -313,6 +313,8 @@ function displayOrderItem()
         </div>
     </div>';
 
+    //return $item_id;
+
 }
 
 function generateItemProductsAsCheckBox()
@@ -320,14 +322,19 @@ function generateItemProductsAsCheckBox()
     $item_id = $_POST['item'];
     $db = new Database();
 
-    $db->query('SELECT description FROM menu_item WHERE id=:menu_item_id');
+    $db->query('SELECT name, description FROM menu_item WHERE id=:menu_item_id');
     $db->bind(':menu_item_id',$item_id);
 
     $data = $db->resultArray();
     //var_dump($data);
     $description = $data[0]['description'];
-    
+    //echo $description;
     $description_separated_items = explode(',',$description);
+
+    //print_r($description_separated_items);
+    
+    echo '<input type="hidden" name="menu_item_name" value="'.$data[0]['name'].'"/>';
+    echo '<input type="hidden" name="item" value="'.$item_id.'"/>';
     
     foreach($description_separated_items as $value)
     {

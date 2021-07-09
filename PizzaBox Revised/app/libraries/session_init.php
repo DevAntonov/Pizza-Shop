@@ -19,3 +19,12 @@ function isLoggedInAdmin()
         return false;
     }
 }
+
+function isCartSet()
+{
+    if(isset($_SESSION['cart'])&& $_SESSION['loggedin'] === true){
+        return true;
+    }else{
+        return false;
+    }
+}
