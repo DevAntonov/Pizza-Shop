@@ -398,7 +398,7 @@ function displayPendingOrders()
             'supplements' => ''
         );
     }
-
+    
     foreach ($rows as $value) {
         
         $deliveryData[$value['delivery_id']]['item_names'] = $deliveryData[$value['delivery_id']]['item_names'].$value['quantity']."x".$value['item_name'].", ";
@@ -441,26 +441,29 @@ function displayPendingOrders()
                                 </tr>
                             </thead>
                             <tbody>';
-                                foreach ($rows as $someValue) {
-                                    echo '<tr>
+                                for ($i = 0; $i < sizeof($rows); $i = $i + 1) {
+
+                                    if($key == $rows[$i]['delivery_id']){
+                                        echo   '<tr>
                                         <td>
-                                            '.$someValue['item_name'].'
+                                            '.$rows[$i]['item_name'].'
                                         </td>
                                         <td>
-                                            '.$someValue['quantity'].'
+                                            '.$rows[$i]['quantity'].'
                                         </td>
                                         <td>
-                                            '.$someValue['description'].'
+                                            '.$rows[$i]['description'].'
                                         </td>
                                         <td>
-                                            '.$someValue['supplements'].'
+                                            '.$rows[$i]['supplements'].'
                                         </td>
                                         <td>
-                                            '.$someValue['total'].'
+                                            '.$rows[$i]['total'].'
                                         </td>
                                     </tr>';
+                                    }
                                 } 
-                            
+                                
                         echo '</tbody>
                         </table>
                         <p class="p_left">Customer name: <b>'.$value['first_name'].' '.$value['last_name'].'</b></p>
@@ -500,24 +503,27 @@ function displayPendingOrders()
                             </tr>
                         </thead>
                         <tbody>';
-                            foreach ($rows as $someValue) {
-                                echo '<tr>
+                            for ($i = 0; $i < sizeof($rows); $i = $i + 1) {
+
+                                if($key == $rows[$i]['delivery_id']){
+                                    echo   '<tr>
                                     <td>
-                                        '.$someValue['item_name'].'
+                                        '.$rows[$i]['item_name'].'
                                     </td>
                                     <td>
-                                        '.$someValue['quantity'].'
+                                        '.$rows[$i]['quantity'].'
                                     </td>
                                     <td>
-                                        '.$someValue['description'].'
+                                        '.$rows[$i]['description'].'
                                     </td>
                                     <td>
-                                        '.$someValue['supplements'].'
+                                        '.$rows[$i]['supplements'].'
                                     </td>
                                     <td>
-                                        '.$someValue['total'].'
+                                        '.$rows[$i]['total'].'
                                     </td>
                                 </tr>';
+                                }
                             } 
                         
                         echo '</tbody>

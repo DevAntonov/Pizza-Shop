@@ -54,7 +54,7 @@
                     </div>
                 </div>
                 <div id="display_list">
-                    <div class="details_box">
+                    <div class="details_box" id="dis_list_table">
                         <h2 class="h2_style_admin">Deliveryman list</h2>
                         <table class="table">
                             <thead>
