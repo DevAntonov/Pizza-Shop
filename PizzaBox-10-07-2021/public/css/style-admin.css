@@ -197,12 +197,25 @@ hr{
     
 }
 
-table, td, th {
-    border: 1px solid black;
-}
-  
-table {
-    margin-left: 10%;
-    width: 80%;
+table { 
+    width: 90%; 
     border-collapse: collapse;
-}
+    margin-left: 5%;
+  }
+  tr:nth-of-type(odd) { 
+    background: #eee; 
+  }
+  th { 
+    background: #333; 
+    color: white; 
+    font-weight: bold; 
+  }
+  td, th { 
+    padding: 6px; 
+    border: 1px solid #ccc; 
+    text-align: left; 
+  }
+
+  #dis_list_table{
+      overflow-x: auto;
+  }
